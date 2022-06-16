@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Newsletter>
+@{
+    ViewData["Title"] = "Newsletter";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Newsletters</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Newsletter" asp-action="Create" class="btn btn-primary">Create</a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Newsletter Name</th>
+            <th>Version</th>
+            <th>Date Created</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>@obj.NewsLetterName</td>
+                <td>@obj.Version</td>
+                <td>@obj.CreatedDateTime</td>
+                    <td>
+                <div class="w-75 btn-group" role="group">
+                    <a asp-controller="Newsletter" asp-action="Edit" asp-route-id="@obj.LetterId">Edit</a> &nbsp;|&nbsp; <form asp-controller="Newsletter" asp-action="DeletePost" asp-route-id="@obj.LetterId" method="post"><a onclick="this.parentElement.submit()" class="text-danger" style="text-decoration:underline;" id="customDeletebtn">Delete</a></form>
+                </div>
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>

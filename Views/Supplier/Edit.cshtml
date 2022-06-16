@@ -1,0 +1,35 @@
+﻿@model Supplier
+
+<div class="container" style="width:50%;">
+    <form method="post" asp-action="Edit"> 
+        <input type="hidden" name="supplierid" value="@Model.SupplierId" />
+        <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h2>
+                    Edit Supplier
+                </h2>
+                <hr />
+            </div>
+            <div asp-validation-summary="All" style="list-style:None;" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="SupplierName"></label>
+                <input asp-for="SupplierName" class="form-control"/>
+                <span asp-validation-for="SupplierName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control"/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a asp-controller="Supplier" asp-action="Index" class="btn btn-primary">Back</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
